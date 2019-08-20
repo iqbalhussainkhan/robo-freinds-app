@@ -3,6 +3,8 @@ import './App.css';
 import SearchField from './SearchField';
 import CardList from './CardList';
 import Scroll from './Scroll';
+import Facebook from './Facebook';
+
 
 class App extends Component{
   constructor(){
@@ -22,6 +24,10 @@ class App extends Component{
     this.setState({ searchfield: event.target.value});
   }
 
+  responseFacebook = (response) =>  {
+    console.log(response)
+  }
+
 
   render(){
     const robotsList = this.state.robots.filter(robot => {
@@ -31,6 +37,7 @@ class App extends Component{
     return robotsList.length ?
      (
        <div className='tc'>
+          <Facebook responseFacebook={ this.responseFacebook }/>
           <h1 className="h1text f1">Robo form</h1>
           <SearchField onSearchChange={this.onSearchChange}/>
           <Scroll>
